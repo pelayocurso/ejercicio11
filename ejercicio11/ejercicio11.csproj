@@ -41,7 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alimento.cs" />
-    <Compile Include="IAlimento.cs" />
+    <Compile Include="CocinaService.cs" />
+    <Compile Include="ICocina.cs" />
+    <Compile Include="IPeso.cs" />
+    <Compile Include="PesoService.cs" />
     <Compile Include="Plato.cs" />
     <Compile Include="Termomix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

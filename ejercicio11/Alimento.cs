@@ -6,8 +6,21 @@ using System.Threading.Tasks;
 
 namespace ejercicio11
 {
-    public class Alimento : IAlimento
+    public class Alimento
     {
-        public double peso { get; set; }
+        public float peso { get; set; }
+        public bool cocinado { get; set; }
+
+        public Alimento()
+        {
+            peso = 0;
+            cocinado = false;
+        }
+
+        public Alimento(float peso, bool cocinado)
+        {
+            this.peso = peso;
+            this.cocinado = cocinado;
+        }
     }
 }

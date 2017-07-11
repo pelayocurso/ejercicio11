@@ -10,10 +10,22 @@ namespace ejercicio11
     {
         private static Termomix instance;
 
-        public IAlimento alimento_uno { get; set; }
-        public IAlimento alimento_dos { get; set; }
+        public Alimento alimento_uno { get; set; }
+        public Alimento alimento_dos { get; set; }
 
-        private Termomix() {}
+        public ICocina cocina { private get; set; }
+        public IPeso peso { private get; set; }
+
+        private Termomix() {
+            this.cocina = new CocinaService();
+            this.peso = new PesoService();
+        }
+
+        private Termomix(ICocina cocina, IPeso peso)
+        {
+            this.cocina = cocina;
+            this.peso = peso;
+        }
 
         public static Termomix Instance
         {
@@ -26,7 +38,7 @@ namespace ejercicio11
             }
         }
 
-        public double Pesar(IAlimento alimento)
+        public float Pesar(Alimento alimento)
         {
             if (alimento_uno == null) {
                 alimento_uno = alimento;
@@ -34,19 +46,20 @@ namespace ejercicio11
                 alimento_dos = alimento;
             }
 
-            return alimento.peso;
+            return peso.Pesar(alimento);
         }
 
-        public Plato Cocinar(IAlimento alimento1, IAlimento alimento2)
+        public Plato Cocinar(Alimento alimento1, Alimento alimento2)
         {
+            cocina.Cocinar(alimento1, alimento2);
             return new Plato(alimento1, alimento2);
         }
 
-        public Plato PesarYCocinar(IAlimento alimento1, IAlimento alimento2)
+        public Plato PesarYCocinar(Alimento alimento1, Alimento alimento2)
         {
             Pesar(alimento1);
             Pesar(alimento2);
-            return Cocinar(alimento1, alimento1);
+            return Cocinar(alimento1, alimento2);
         }
     }
 }

@@ -12,8 +12,9 @@ namespace ejercicio11Test
         public void TestPesar()
         {
             Termomix sut = Termomix.Instance;
-            AlimentoPrueba ali = new AlimentoPrueba();
-            double peso = sut.Pesar(ali);
+            Alimento ali = new Alimento();
+            ali.peso = (float)5.0;
+            float peso = sut.Pesar(ali);
             Assert.AreEqual(5.0, peso);
         }
 
@@ -21,8 +22,8 @@ namespace ejercicio11Test
         public void TestCocinar()
         {
             Termomix sut = Termomix.Instance;
-            AlimentoPrueba ali_uno = new AlimentoPrueba();
-            AlimentoPrueba ali_dos = new AlimentoPrueba();
+            Alimento ali_uno = new Alimento();
+            Alimento ali_dos = new Alimento();
             sut.Cocinar(ali_uno, ali_dos);
         }
 
@@ -30,25 +31,9 @@ namespace ejercicio11Test
         public void TestPesarYCocinar()
         {
             Termomix sut = Termomix.Instance;
-            AlimentoPrueba ali_uno = new AlimentoPrueba();
-            AlimentoPrueba ali_dos = new AlimentoPrueba();
+            Alimento ali_uno = new Alimento();
+            Alimento ali_dos = new Alimento();
             sut.PesarYCocinar(ali_uno, ali_dos);
-        }
-    }
-
-    public class AlimentoPrueba : IAlimento
-    {
-        public double peso
-        {
-            get
-            {
-                return 5.0;
-            }
-
-            set
-            {
-                this.peso = peso;
-            }
         }
     }
 }

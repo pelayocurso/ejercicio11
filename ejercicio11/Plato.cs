@@ -8,10 +8,10 @@ namespace ejercicio11
 {
     public class Plato
     {
-        public IAlimento alimento_uno { get; set; }
-        public IAlimento alimento_dos { get; set; }
+        public Alimento alimento_uno { get; set; }
+        public Alimento alimento_dos { get; set; }
 
-        public Plato(IAlimento uno, IAlimento dos)
+        public Plato(Alimento uno, Alimento dos)
         {
             this.alimento_uno = uno;
             this.alimento_dos = dos;
