@@ -22,5 +22,16 @@ namespace ejercicio11
             this.peso = peso;
             this.cocinado = cocinado;
         }
+
+        public override bool Equals(Object obj)
+        {
+            if (obj == null || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+
+            return (this.peso == ((Alimento)obj).peso &&
+                    this.cocinado == ((Alimento)obj).cocinado);
+        }
     }
 }

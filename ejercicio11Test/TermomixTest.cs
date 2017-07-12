@@ -33,7 +33,14 @@ namespace ejercicio11Test
             Termomix sut = Termomix.Instance;
             Alimento ali_uno = new Alimento();
             Alimento ali_dos = new Alimento();
-            sut.PesarYCocinar(ali_uno, ali_dos);
+            Plato plato = sut.PesarYCocinar(ali_uno, ali_dos);
+
+            Assert.IsTrue(
+                new Plato(new Alimento(0, true), new Alimento(0, true)).Equals(plato)
+            );
+            Assert.IsFalse(
+                new Plato(null, new Alimento(0, true)).Equals(plato)
+            );
         }
     }
 }
