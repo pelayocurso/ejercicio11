@@ -8,17 +8,20 @@ namespace ejercicio11
 {
     public class Alimento
     {
+        public string nombre { get; set; }
         public float peso { get; set; }
         public bool cocinado { get; set; }
 
         public Alimento()
         {
+            nombre = "chope";
             peso = 0;
             cocinado = false;
         }
 
-        public Alimento(float peso, bool cocinado)
+        public Alimento(string nombre, float peso, bool cocinado)
         {
+            this.nombre = nombre;
             this.peso = peso;
             this.cocinado = cocinado;
         }
@@ -31,7 +34,8 @@ namespace ejercicio11
             }
 
             return (this.peso == ((Alimento)obj).peso &&
-                    this.cocinado == ((Alimento)obj).cocinado);
+                    this.cocinado == ((Alimento)obj).cocinado) &&
+                    this.nombre == ((Alimento)obj).nombre;
         }
     }
 }

@@ -35,7 +35,7 @@ namespace ejercicio11
             }
 
 
-            if (this.alimento_dos != null && ((Plato)obj).alimento_dos != null) {
+            if (this.alimento_dos == null || ((Plato)obj).alimento_dos == null) {
                 if (!(this.alimento_dos == null && ((Plato)obj).alimento_dos == null)) {
                     return false;
                 }
