@@ -17,6 +17,7 @@ namespace ejercicio11Test
             Assert.AreEqual(1, sut.Pesar(ali));
         }
 
+        [TestMethod]
         public void TestCocinar()
         {
             Termomix sut = Termomix.Instance;
@@ -35,6 +36,7 @@ namespace ejercicio11Test
             );
         }
 
+        [TestMethod]
         public void TestValidar()
         {
             Termomix sut = Termomix.Instance;
@@ -42,6 +44,16 @@ namespace ejercicio11Test
             Alimento ali_dos = new Alimento("chope", 1, false);
 
             Assert.IsTrue(sut.Validar(ali_uno, ali_dos));
+        }
+        
+        [TestMethod]
+        public void TestAnadir()
+        {
+            Termomix sut = Termomix.Instance;
+            IRepository rep = new RecetaRepository();
+            IRecetaService re_ser = new RecetaService(rep);
+            sut.recetario = re_ser;
+            sut.Anadir(new Receta());
         }
 
         [TestMethod]
@@ -70,12 +82,12 @@ namespace ejercicio11Test
         {
             Termomix sut = Termomix.Instance;
             Alimento ali_uno = new Alimento("chope", 1, false);
-            Alimento ali_dos = new Alimento("chope", 1, false);
+            Alimento ali_dos = new Alimento("mortadela", 1, false);
 
             Plato plato = sut.ValidarYCocinar(ali_uno, ali_dos);
-
+            Plato test = new Plato(new Alimento("chope", 1, true), new Alimento("mortadela", 1, true));
             Assert.IsTrue(
-                plato.Equals(new Plato(new Alimento("chope", 1, true), new Alimento("chope", 1, true)))
+                plato.Equals(test)
             );
             /*Assert.IsFalse(
                 new Plato(null, new Alimento(0, true)).Equals(plato)

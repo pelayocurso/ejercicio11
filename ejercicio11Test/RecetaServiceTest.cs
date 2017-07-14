@@ -1,19 +1,22 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ejercicio11;
+using Moq;
 
 namespace ejercicio11Test
 {
     [TestClass]
     public class RecetaServiceTest
     {
-        [TestMethod]
-        public void TestValidarAlimentos()
+        public void TestGuardarReceta()
         {
-            IReceta sut = new RecetaService();
-            Alimento ali_uno = new Alimento("chope", 1,false);
-            Alimento ali_dos = new Alimento("mortadela",1,false);
-            Assert.IsTrue(sut.ValidarAlimentos(ali_uno, ali_dos));
+            var mockRecetaRepository = new Mock<IRepository>();
+            IReceta receta = new Receta();
+
+            IRecetaService sut = new RecetaService(mockRecetaRepository.Object);
+            sut.Guardar(receta);
+
+            mockRecetaRepository.Verify(recetaRepository => recetaRepository.Create(It.IsAny<Receta>()), Times.Once);
         }
     }
 }

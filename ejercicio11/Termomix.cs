@@ -16,18 +16,23 @@ namespace ejercicio11
         public ICocina cocina { private get; set; }
         public IPeso peso { private get; set; }
         public IReceta receta { private get; set; }
+        public IRecetaService recetario { get; set; }
 
         private Termomix() {
             this.cocina = new CocinaService();
             this.peso = new PesoService();
-            this.receta = new RecetaService();
+            this.receta = new Receta();
+            this.recetario = new RecetaService();
+            recetario.Guardar(receta);
         }
 
-        private Termomix(ICocina cocina, IPeso peso, IReceta receta)
+        private Termomix(ICocina cocina, IPeso peso, IReceta receta, IRecetaService recetario)
         {
             this.cocina = cocina;
             this.peso = peso;
             this.receta = receta;
+            this.recetario = recetario;
+            recetario.Guardar(receta);
         }
 
         public static Termomix Instance
@@ -80,6 +85,11 @@ namespace ejercicio11
             Pesar(alimento1);
             Pesar(alimento2);
             return Cocinar(alimento1, alimento2);
+        }
+
+        public void Anadir(IReceta receta)
+        {
+            recetario.Guardar(receta);
         }
     }
 }

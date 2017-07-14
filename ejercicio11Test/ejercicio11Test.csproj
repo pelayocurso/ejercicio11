@@ -68,6 +68,8 @@
     <Compile Include="RecetaServiceTest.cs" />
     <Compile Include="AlimentoTest.cs" />
     <Compile Include="PlatoTest.cs" />
+    <Compile Include="RecetaRepositoryTest.cs" />
+    <Compile Include="RecetaTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ejercicio11\ejercicio11.csproj">
